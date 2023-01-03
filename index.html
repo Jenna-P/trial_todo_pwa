@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>TODO_pwa_</title>
+  </head>
+  <body>
+    <div class="center">
+      <h1>Todo List</h1>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Add a new todo item" />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log("Service worker registered:", registration);
+            })
+            .catch((error) => {
+              console.error("Error registering service worker:", error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
